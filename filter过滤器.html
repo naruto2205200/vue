@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        table {
+            height: 100px;
+            border: 1px solid #333333;
+            border-spacing: 0;
+        }
+            
+        th {
+            border: 1px solid #333333;
+        }
+        td {
+            border: 1px solid #333333;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            {{ msg | msgFormate }}
+        </p>
+        <table >
+            <tr>
+                <th>序号</th>
+                <th>id</th>
+                <th>姓名</th>
+                <th>日期</th>
+            </tr>
+            <tr v-for="(item,index) in list">
+                <td>{{ index+1 }}</td>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.date | dateFormate }}</td>
+            </tr>
+        </table>
+        <input type="button" value="dianji" @keyp.enter="">
+    </div>
+    <script>
+        //全局过滤器
+        Vue.filter('msgFormate',function(value){
+            return value.replace(/曾经/g,'哈哈')
+        });
+        Vue.filter('dateFormate',function(date){
+            // if(date.toLowerCase()==='yyyy-mm-dd')
+            var dt = new Date(date)
+            var year = dt.getFullYear().toString().padStart(2,'0')
+            var month = (dt.getMonth()+1).toString().padStart(2,'0')
+            var day = dt.getDate().toString().padStart(2,'0')
+            var hh = dt.getHours().toString().padStart(2,'0')
+            var mm = dt.getMinutes().toString().padStart(2,'0')
+            var dd = dt.getSeconds().toString().padStart(2,'0')
+            return `${year}-${month}-${day} ${hh}:${mm}:${dd}`
+        });
+        var vm=new Vue({
+           el:'#app',
+           data:{
+                msg: '曾经的曾经都已不复存在'+new Date().getDate(),
+                list: [
+                    {id:1,name:'张三',date: new Date()},
+                    {id:2,name:'李四',date: new Date()},
+                    {id:3,name:'王五',date: new Date()}
+                ],
+           },
+           methods:{},
+           filters: {//定义私有过滤器，就近原则，如果名称和全局过滤器一致，则调用的是私有过滤器
+
+           }
+        });
+    </script>
+</body>
+
+</html>

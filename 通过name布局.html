@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+    <style>
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+        }
+        .header {
+            background-color: #334455;
+            height: 50px;
+        }
+        .container {
+            display: flex;
+        }
+        .left {
+            background-color: lightgreen;
+            height: 100px;
+        }
+        .main {
+            background-color: lightpink;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <div class="container">
+            <router-view name="left"></router-view>
+            <router-view name="main"></router-view>
+        </div>
+    </div>
+    <script>
+        var headerBox={
+            template: '<h3 class="header">this is header</h3>'
+        }
+        var leftBox={
+            template: '<h3 class="left">this is left</h3>'
+        }
+        var mainBox={
+            template: '<h3 class="main">this is main</h3>'
+        }
+        var router = new VueRouter({
+            routes: [
+                {path:'/',components: {
+                    'default': headerBox,
+                    'left': leftBox,
+                    'main': mainBox,
+                }},
+            ]
+        })
+        var vm=new Vue({
+           el:'#app',
+           data:{},
+           methods:{},
+           router
+        });
+    </script>
+</body>
+
+</html>

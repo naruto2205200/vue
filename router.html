@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <!-- <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script> -->
+    <style>
+        .router-link-exact-active {
+            color: blue;
+            font-weight: 700;
+            text-decoration: underline;
+        }
+        /* 设置动画切换效果 */
+        .v-enter,.v-leave-to {
+            opacity: 0;
+            transform: translateX(140px);
+        }
+        .v-enter-active,.v-leave-active {
+            transition: all 0.5s ease;
+        }
+        /* 设置动画切换效果 */
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 设置动画切换效果 -->
+        <transition mode="out-in">
+            <router-view></router-view>
+        </transition>
+        <a href="#/login">登录</a>
+        <a href="#/register">注册</a>
+        //tag 渲染成一个span标签
+        <router-link to="/login" tag="span">router-login</router-link>
+        <router-link to="/register" tag="span">router-register</router-link>
+    </div>
+    <script>
+        var login={
+            template:'<h3>This is the login component</h3>',
+        }
+        var register={
+            template:'<h3>This is the register component</h3>',
+        }
+        //创建一个路由对象，导入vue-router包之后，在window全局对象中，就有了一个路由的构造函数 VueRouter
+        var routerObj = new VueRouter({
+            //传递一个配置对象，router表示 【路由匹配规则】 的意思
+            routes: [
+                //每个路由规则都是一个对象，有两个必须的属性：
+                //1）path：表示监听哪个路由的链接地址；
+                //2）component：值必须是一个组件的模板对象，不能是组件的引用名称
+                // {path:'login',component:'login'},这种方式就是错误的
+                //定义默认重定向访问login
+                {path:'/',redirect:'/login'},
+                {path:'/login',component:login},
+                {path:'/register',component:register}
+            ],
+            linkActiveClass: '',
+        })
+    
+        Vue.component('pwd',{
+
+        })
+        var vm=new Vue({
+           el:'#app',
+           data:{},
+           methods:{},
+           //将路由规则对象注册到vm实例上，用来监听URL地址的变化，然后展示对应的组件
+           router:routerObj
+        });
+    </script>
+</body>
+
+</html>

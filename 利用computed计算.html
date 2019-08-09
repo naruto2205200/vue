@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="./js/vue.js"></script>
+    <script src="./js/vue-router.js"></script>
+</head>
+
+<body>
+    <div id="app">
+            <input type="text" name="firstname" id="firstname" v-model="firstname" >
+            <input type="text" name="lastname" id="lastname" v-model="lastname" >
+            <!-- fullname 当做普通属性来使用 -->
+            <input type="text" name="fullname" id="fullname" v-model="fullname" >
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+            firstname: '',
+            lastname: '',
+           },
+           methods:{},
+            //在computed中 ，可以定义一些属性，这些属性叫做[计算属性]，
+            //计算属性的本质就是一个方法，不过我们在使用属性的时候，是把它们的名称直接当做属性来使用
+            //并不会把计算属性当做方法使用
+            //计算属性在引用的时候不能加 () ，当做普通属性来使用
+            //function 内的用到的data的数据发生变化都会重新计算
+           computed: {
+            'fullname': function(){
+                return this.firstname+'-'+this.lastname;
+            }
+           }
+        });
+    </script>
+</body>
+
+</html>

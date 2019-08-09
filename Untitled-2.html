@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div id="add">
+        <input type="button" value="aaaaa" @click="lang">
+        <input type="button" value="停止" @click="stop">
+    </div>
+<script>
+    var vm = new Vue({
+        el: '#add',
+        data: {
+            msg: '123131',
+            intervalId: null,
+        },
+        methods: {
+            lang() {
+                if(!this.intervalId!=null){
+                    this.intervalId = setInterval(() => {
+                        var start = this.msg.substring(0,1);
+                        var end = this.msg.substring(1);
+                        this.msg = end+start;
+                        console.log(this.msg);
+                    }, 400);
+                }
+            },
+            stop() {
+                clearInterval(this.intervalId);
+                this.intervalId=null;
+            }
+        }
+    });
+</script>
+</body>
+</html>

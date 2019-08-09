@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <style>
+        li {
+            border: 1px solid #444444;
+            margin: 5px;
+            line-height: 35px;
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label>
+                id: <input type="text" name="id" id="id" v-model="id">
+            </label>
+            <label>
+                name: <input type="text" name="name" id="name" v-model="name">
+            </label>
+            <input type="button" value="添加" @click="add">
+        </div>
+        <ul>
+            <transition-group appear >
+                <li v-for="item in list" :key="item.id">
+                    {{ item.id }}-------{{ item.name }}
+                </li>
+            </transition-group>
+        </ul>
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               id: '',
+               name: '',
+               list: [
+                   {id:1,name:'张三',age:29},
+                   {id:2,name:'吕梁市',age:19},
+                   {id:3,name:'魔刹',age:15},
+                   {id:4,name:'李玲玉',age:21},
+               ],
+           },
+           methods:{
+               add() {
+                   this.list.push({id:this.id,name:this.name})
+            
+               }
+           }
+        });
+    </script>
+</body>
+
+</html>

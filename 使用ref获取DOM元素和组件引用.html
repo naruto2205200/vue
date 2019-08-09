@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="dian" @click="getElement">
+        <h3 id="h3" ref="h3">这是一个h3标签</h3>
+        <login ref="mylogin"></login>
+        <pwd></pwd>
+    </div>
+    <script>
+        var login = {
+            template: "<h3>这是一个login</h3>",
+            data() {
+                return{
+                    msg: 'login---msg'
+                }
+            },
+            methods: {
+                show() {
+                    console.log(this.msg)
+                }
+            }
+        }
+        var pwd = {
+            template: "<h3>这是一个pwd</h3>",
+        }
+        var vm=new Vue({
+           el:'#app',
+           data: {
+           },
+           methods:{
+               getElement(){
+                //通过$refs在父组件总访问子组件的信息
+                console.log(this.$refs.h3.innerText);
+                console.log(this.$refs.mylogin.msg);
+                this.$refs.mylogin.show()
+               }
+           },
+           components:{
+               login,pwd
+           }
+        });
+    </script>
+</body>
+
+</html>

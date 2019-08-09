@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击" @click=" msg ='ok'">
+        <h3 id="h3">{{ msg }}</h3>
+        <mycom></mycom>
+    </div>
+    <template id="demo">
+        <div>
+            <h3>hahhahaha</h3>
+        </div>
+    </template>
+    <script>
+        Vue.component('mycom',{
+            template:'#demo'
+        })
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               msg: '这是一个demo'
+           },
+           methods: {
+               show() {
+                   console.log(this.msg);
+               }
+           },
+           //刚刚new Vue()之后，这个时候，数据还没有挂载呢，只是一个空壳，date、methods、el都没有初始化完成，不能够调用
+           beforeCreate: function() {
+            //    this.show();
+           },
+           //这个时候已经可以使用到数据，也可以更改数据,在这里更改数据不会触发updated函数
+           created: function(){
+
+           },
+           //虚拟dom已经在内存中编译好了，但是尚未挂载到页面中，此时页面还是旧的,在这里也可以更改数据，不会触发updated
+           //beforeMount方法之后、mounted方法之前，会渲染出真实dom
+           beforeMount: function(){
+
+           },
+           //组件已经出现在页面中，数据、真实dom都已经处理好了,事件都已经挂载好了
+           //执行完mounted方法表示Vue已经全部实例化完毕，此时已经脱离创建阶段，进入运行阶段
+           mounted: function(){
+
+           },
+           //重新渲染之前触发,页面的数据还是旧的，此时data数据是最新的，页尚未和最新的数据同步
+           beforeUpdate: function(){
+                console.log("beforeUpdate:"+document.getElementById('h3').innerHTML);
+           },
+           //数据已经更改完成，dom也重新render(渲染)完成
+           updated: function() {
+                console.log("updated:"+document.getElementById('h3').innerHTML);
+           },
+           beforeDestroy: function() {
+
+           },
+           destoryed: function(){
+
+           }
+        
+        });
+    </script>
+</body>
+
+</html>

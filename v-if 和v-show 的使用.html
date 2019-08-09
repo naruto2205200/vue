@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="dianji" @click="clickEvent">
+        <p v-if="flag">这是flag1</p>
+        <p v-show="flag">这是v-show控制的元素</p>
+    </div>
+    <script>
+        var vm=new Vue({
+           el:'#app',
+           data:{
+               flag: true,
+           },
+           methods:{
+            clickEvent() {
+                this.flag=false;
+            }
+           },
+           
+        });
+    </script>
+</body>
+
+</html>

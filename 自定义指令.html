@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" name="demo" id="demo1" />
+        <input type="text" name="demo" id="demo2" v-focus v-color="'blue'"   />
+        <span v-fontweight="700">这是一个span标签</span>
+    </div>
+    <script>
+        Vue.directive('focus',{
+            //只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置。
+            //注意：在每个函数中，第一个参数永远是el，表示被绑定了指令的那个元素，这个el参数，是一个原生的js对象
+            //在元素刚绑定了指令的时候，还没有插入到DOM中区，这时候调用focus方法没有作用，因为只有插入到DOM中才能获取焦点
+            bind: function(el){
+                // el.focus();
+            },
+            //被绑定元素插入DOM时调用，只触发一次
+            inserted: function(el){
+                el.focus();
+            },
+            //所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前。指令的值可能发生了改变，也可能没有。
+            //但是你可以通过比较更新前后的值来忽略不必要的模板更新 (详细的钩子函数参数见下)。
+            //调用多次
+            update: function() {
+                
+            }
+        });
+        //自定义一个设置字体颜色的指令
+        Vue.directive('color',{
+            bind: function(el,binding){
+                // el.style.color='red';
+                el.style.color=binding.value;
+            },
+            inserted: function(){},
+            update: function(){}
+        });
+        var vm=new Vue({
+           el:'#app',
+           data:{},
+           methods:{},
+           directives: {
+               'fontweight': {
+                   bind: function(el,binding){
+                       el.style.fontWeight=binding.value;
+                   }
+               }
+           }
+        });
+    </script>
+</body>
+
+</html>
