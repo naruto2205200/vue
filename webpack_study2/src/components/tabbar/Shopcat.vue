@@ -22,6 +22,8 @@ export default {
     },
 }
 </script>
-<style>
-
+<style scoped>
+    div {
+        background-color: rgb(123, 255, 0);
+    }
 </style>
