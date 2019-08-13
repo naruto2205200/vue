@@ -11,15 +11,15 @@ export default {
 
         }
     },
-    methods: {
+    // methods: {
 
-    },
-    components: {
+    // },
+    // components: {
 
-    },
-    created: {
+    // },
+    // created: {
 
-    },
+    // },
 }
 </script>
 <style scoped>

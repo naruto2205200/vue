@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value="点击获取数据" id="btn">
+    </div>
+    <script>
+        $(function(){
+            $('#btn').on('click',function(){
+                $.ajax({
+                    url:'http://localhost:8080/hello/getlunbo',
+                    dataType: 'json',
+                    type: 'get'
+                }).then(function(msg){
+                        console.log(msg);
+                })
+            })
+        });
+    </script>
+</body>
+
+</html>
