@@ -12,12 +12,13 @@
             <mt-swipe-item>3</mt-swipe-item> -->
         </mt-swipe>
          <ul class="mui-table-view mui-grid-view mui-grid-9">
-		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+                        <router-link to="/home/newslist">
 		                    <span class="mui-icon mui-icon-location"></span>
-		                    <div class="mui-media-body">新闻资讯1</div></a></li>
+		                    <div class="mui-media-body">新闻资讯</div></router-link></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <span class="mui-icon mui-icon-email"></span>
-		                    <div class="mui-media-body">图片分享2</div></a></li>
+		                    <div class="mui-media-body">图片分享</div></a></li>
 		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
 		                    <span class="mui-icon mui-icon-chatbubble"></span>
 		                    <div class="mui-media-body">商品购买</div></a></li>
@@ -35,6 +36,8 @@
 </template>
 <script>
 import { Toast } from 'mint-ui';
+import request from '../../request'
+// import axios from 'axios'
 export default {
     name: 'home',
     data(){
@@ -47,19 +50,32 @@ export default {
     },
     methods: {
         getSwipeList() {
-            this.$http.get('http://localhost:8080/hello/getlunbo').then(result => {
-                console.log(result.body)
-                this.lunbolist=result.body;
-            }).catch(error=>{
-                Toast('请求失败')
-                console.error(error)
+            // this.$http.get('http://localhost:8080/hello/getlunbo').then(result => {
+            //     console.log(result.body)
+            //     this.lunbolist=result.body;
+            // }).catch(error=>{
+            //     Toast('请求失败')
+            //     console.error(error)
+            // })
+            // request({
+            //     method:'get',
+            //     url:'/hello/getlunbo',
+            // }).then(response=>{
+            //     console.log(response.data)
+            // })
+            request.get('/hello/getlunbo').then((resoponse)=>{
+                console.log(resoponse.data);
+                this.lunbolist=resoponse.data;
             })
+            // let ref = this;
+            // axios.get('http://localhost:8080/hello/getlunbo').
+            //     then(function (response){
+            //         console.log(response.data);
+            //         debugger
+            //         ref.lunbolist=response.data;
+            // })
         }
     },
-    components: {
-
-    },
-   
 }
 </script>
 <style scoped>
