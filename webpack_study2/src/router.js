@@ -9,6 +9,7 @@ import member from './components/tabbar/Member.vue'
 import shopcat from './components/tabbar/Shopcat.vue'
 import search from './components/tabbar/Search.vue'
 import newlist from './components/news/NewsList.vue'
+import newsInfo from './components/news/NewsInfo.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
     routes: [
@@ -32,6 +33,7 @@ var router = new VueRouter({
         {path:'/shopcat',component:shopcat},
         {path:'/search',component:search},
         {path:'/home/newslist',component:newlist},
+        {path:'/home/newsInfo/:id',component:newsInfo},
 
     ],
     //默认选中样式高亮

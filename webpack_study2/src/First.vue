@@ -23,7 +23,6 @@
 			</router-link>
 		</nav>
     </div>
-   
 </template>
 <script>
 
@@ -31,6 +30,7 @@
 <style scoped>
     .app-container {
 		padding-top: 40px;
+		padding-bottom: 50px;
 		/* 消除动态生成的x轴方向的横向滚动条 */
 		overflow-x: hidden; 
     }

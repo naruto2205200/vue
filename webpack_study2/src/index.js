@@ -6,6 +6,12 @@ import Vue from 'vue'
 import router from './router.js'
 import app from './App.vue'
 import first from './First.vue'
+//导入moment ，控制js的日期
+import moment from 'moment'
+//全局过滤器 过滤时间格式
+Vue.filter('dateFormate',function(dateStr,pattern='YYYY-MM-DD HH:mm:ss'){
+    return moment(dateStr).format(pattern)
+})
 
 // 引入全部组件，这样就可以直接在相关.vue文件中直接引用相关组件，不需要单独调用
 // import MintUI from 'mint-ui'

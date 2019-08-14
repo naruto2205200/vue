@@ -50,30 +50,10 @@ export default {
     },
     methods: {
         getSwipeList() {
-            // this.$http.get('http://localhost:8080/hello/getlunbo').then(result => {
-            //     console.log(result.body)
-            //     this.lunbolist=result.body;
-            // }).catch(error=>{
-            //     Toast('请求失败')
-            //     console.error(error)
-            // })
-            // request({
-            //     method:'get',
-            //     url:'/hello/getlunbo',
-            // }).then(response=>{
-            //     console.log(response.data)
-            // })
             request.get('/hello/getlunbo').then((resoponse)=>{
                 console.log(resoponse.data);
                 this.lunbolist=resoponse.data;
             })
-            // let ref = this;
-            // axios.get('http://localhost:8080/hello/getlunbo').
-            //     then(function (response){
-            //         console.log(response.data);
-            //         debugger
-            //         ref.lunbolist=response.data;
-            // })
         }
     },
 }
