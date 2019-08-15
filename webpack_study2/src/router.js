@@ -10,6 +10,7 @@ import shopcat from './components/tabbar/Shopcat.vue'
 import search from './components/tabbar/Search.vue'
 import newlist from './components/news/NewsList.vue'
 import newsInfo from './components/news/NewsInfo.vue'
+import photoList from './components/photos/PhotoList.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
     routes: [
@@ -34,6 +35,7 @@ var router = new VueRouter({
         {path:'/search',component:search},
         {path:'/home/newslist',component:newlist},
         {path:'/home/newsInfo/:id',component:newsInfo},
+        {path:'/home/photoList',component:photoList},
 
     ],
     //默认选中样式高亮

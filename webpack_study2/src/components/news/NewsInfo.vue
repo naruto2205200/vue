@@ -13,7 +13,7 @@
 </template>
 <script>
 import request from '../../request'
-import comment from '../subcomments/comment.vue'
+import comment from '../subcomments/Comment.vue'
 export default {
     data() {
         return {
