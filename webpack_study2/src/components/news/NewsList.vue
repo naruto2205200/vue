@@ -13,7 +13,7 @@
                                 <span>点击：{{ item.numberOfClicks }}次</span>
                             </p>
 						</div>
-					</router-link>>
+					</router-link>
 				</li>
 			</ul>   
     </div>

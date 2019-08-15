@@ -23,18 +23,16 @@ module.exports ={
             test: /\.css$/,
             use: [ 'style-loader', 'css-loader' ]
           },
-          {
-            test: /\.scss$/,
-            // use: ['style-loader','css-loader','sass-loader']
-            use:  [{
-                    loader: "style-loader" // 将 JS 字符串生成为 style 节点
-                  }, {
-                    loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
-                  }, {
-                    loader: "sass-loader" // 将 Sass 编译成 CSS
-                  }
-            ]
-          },
+          // {
+          //   test: /\.scss$/,
+          //   use: [{
+          //       loader: "style-loader" // 将 JS 字符串生成为 style 节点
+          //   }, {
+          //       loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
+          //   }, {
+          //       loader: "sass-loader" // 将 Sass 编译成 CSS
+          //   }]
+          // },
           {
               test: /\.(png|jpg|gif)$/,
               //limit：给定的值是图片的大小，单位是byte，如果引用的图片的大小大于或等于给定的limit，则不会被转换为base64字符串

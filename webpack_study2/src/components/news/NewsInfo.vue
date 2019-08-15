@@ -5,11 +5,15 @@
             <span>发表时间：{{ newsinfo.releaseTime}}</span>
             <span>点击：{{ newsinfo.numberOfClicks}}</span>
         </p>
+        <!-- 内容区 -->
         <div class="content" v-html="newsinfo.content"></div>
+        <!-- 评论子组件 -->
+        <comment :id="id"></comment>
     </div>
 </template>
 <script>
 import request from '../../request'
+import comment from '../subcomments/comment.vue'
 export default {
     data() {
         return {
@@ -27,6 +31,10 @@ export default {
     created() {
         this.getNewsInfo();
     },
+    components: {
+        //注册子组件的节点
+        comment
+    }
 }
 </script>
 <style>
@@ -44,6 +52,7 @@ export default {
         color: #226aff;
         display: flex;
         justify-content: space-between;
+        padding: 0 10px;
     }
     /* v-html 中img 有时会出现布局问题，这里设置宽度100% ，
     然后把style的 scoped 去掉（scoped防止全局污染，如果类名全局唯一是不会有污染的） */
