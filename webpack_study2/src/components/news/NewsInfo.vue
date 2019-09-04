@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             id: this.$route.params.id,
-            newsinfo : null,
+            newsinfo : [],
         }
     },   
     methods: {
@@ -47,7 +47,7 @@ export default {
         text-align: center;
         margin: 15px 0;
     }
-    .subtitle {
+    .newsInfo-container .subtitle {
         font-size: 13px;
         color: #226aff;
         display: flex;

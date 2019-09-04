@@ -6,6 +6,9 @@ import Vue from 'vue'
 import router from './router.js'
 import app from './App.vue'
 import first from './First.vue'
+//缩略图的使用
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview)
 //导入moment ，控制js的日期
 import moment from 'moment'
 //全局过滤器 过滤时间格式
@@ -14,18 +17,19 @@ Vue.filter('dateFormate',function(dateStr,pattern='YYYY-MM-DD HH:mm:ss'){
 })
 
 // 引入全部组件，这样就可以直接在相关.vue文件中直接引用相关组件，不需要单独调用
-// import MintUI from 'mint-ui'
-// import 'mint-ui/lib/style.css'
-// Vue.use(MintUI)
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.use(MintUI)
 
-// 按需引入部分组件
-import { Button,Header,Tabbar, TabItem,Swipe, SwipeItem } from 'mint-ui'
-Vue.component(Button.name, Button);
-Vue.component(Header.name, Header);
-Vue.component(Tabbar.name, Tabbar);
-Vue.component(TabItem.name, TabItem);
-Vue.component(Swipe.name, Swipe);
-Vue.component(SwipeItem.name, SwipeItem);
+// 按需引入部分组件，这样的形式有些样式无法显示，懒加载的图片的加载样式，如果需要这种类型的样式需要添加全局样式，不能用按需加载
+// import { Button,Header,Tabbar, TabItem,Swipe, SwipeItem, Lazyload  } from 'mint-ui'
+// Vue.component(Button.name, Button);
+// Vue.component(Header.name, Header);
+// Vue.component(Tabbar.name, Tabbar);
+// Vue.component(TabItem.name, TabItem);
+// Vue.component(Swipe.name, Swipe);
+// Vue.component(SwipeItem.name, SwipeItem);
+// Vue.use(Lazyload);
 //第一个参数为别名
 // Vue.component('mybutton', Button)
 // Vue.component('mycell', Cell)

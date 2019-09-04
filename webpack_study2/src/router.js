@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import account from './main/Account.vue'
-import goodsList from './main/GoodsList.vue'
 import login from './subcom/login.vue'
 import register from './subcom/register.vue'
 import home from './components/tabbar/Home.vue'
@@ -11,6 +10,8 @@ import search from './components/tabbar/Search.vue'
 import newlist from './components/news/NewsList.vue'
 import newsInfo from './components/news/NewsInfo.vue'
 import photoList from './components/photos/PhotoList.vue'
+import photoInfo from './components/photos/PhotoInfo.vue'
+import goodsList from './components/goods/GoodsList.vue'
 Vue.use(VueRouter)
 var router = new VueRouter({
     routes: [
@@ -22,7 +23,7 @@ var router = new VueRouter({
                 {path: 'register',component: register},
             ]
         },
-        {path:'/goodsList',component:goodsList},
+        // {path:'/goodsList',component:goodsList},
         {
             path:'/home',
             component:home,
@@ -36,6 +37,9 @@ var router = new VueRouter({
         {path:'/home/newslist',component:newlist},
         {path:'/home/newsInfo/:id',component:newsInfo},
         {path:'/home/photoList',component:photoList},
+        {path:'/home/photoInfo/:id',component:photoInfo},
+        {path:'/home/goodsList',component:goodsList},
+
 
     ],
     //默认选中样式高亮

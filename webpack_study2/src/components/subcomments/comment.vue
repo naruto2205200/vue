@@ -8,7 +8,7 @@
 
         <div class="comment_list">
             <div class="comment_item" v-for="item in comments" :key="item.id">
-                <div class="comment_item_title">{{item.userName}} 发表时间：{{item.addTime}}</div>
+                <div class="comment_item_head">{{item.userName}} 发表时间：{{item.addTime}}</div>
                 <div class="comment_item_body">
                     {{item.content==='undefined'?'此用户很懒，什么都没写！':item.content}}
                 </div>
@@ -68,6 +68,7 @@ export default {
 <style scoped>
     .comment_container h3 {
         font-size: 18px;
+        text-align: left;
     }
     .comment_container textarea {
         margin: 0;
@@ -80,7 +81,7 @@ export default {
     .comment_container .comment_list .comment_item {
         font-size: 13px;
     }
-    .comment_container .comment_list .comment_item .comment_item_title {
+    .comment_container .comment_list .comment_item .comment_item_head {
         line-height: 30px;
         background-color: #ccc;
     }
