@@ -75,6 +75,15 @@ export default {
         getMore(){
             this.pageNum++;
             this.getGoodsList();
+        },
+        goDetail(id){
+            //路由跳转
+            //1、最简单的
+            // this.router.push("/home/goodsInfo/"+id)
+            //2、传递对象
+            // this.$router.push({path:"/home/goodsInfo"+id})
+            //3、传递命名路由，这种方式需要在router.js 中添加name属性
+            this.$router.push({name: "goodsInfo",params:{id:id}})
         }
     },
 }
