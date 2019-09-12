@@ -13,6 +13,8 @@ import photoList from './components/photos/PhotoList.vue'
 import photoInfo from './components/photos/PhotoInfo.vue'
 import goodsList from './components/goods/GoodsList.vue'
 import goodsInfo from './components/goods/GoodsInfo.vue'
+import goodsDesc from './components/goods/GoodsDesc.vue'
+import goodsComment from './components/goods/GoodsComment.vue'
 
 Vue.use(VueRouter)
 var router = new VueRouter({
@@ -42,6 +44,8 @@ var router = new VueRouter({
         {path:'/home/photoInfo/:id',component:photoInfo},
         {path:'/home/goodsList',component:goodsList},
         {path:'/home/goodsInfo/:id',component:goodsInfo,name:"goodsInfo"},
+        {path:'/home/goodsDesc/:id',component:goodsDesc,name:"goodsDesc"},
+        {path:'/home/goodsComment/:id',component:goodsComment,name:"goodsComment"},
     ],
     //默认选中样式高亮
     linkActiveClass: 'mui-active'

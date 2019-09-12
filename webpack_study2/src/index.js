@@ -3,12 +3,40 @@ import 'bootstrap/dist/css/bootstrap.css'
 import './lib/mui/css/mui.min.css'
 import './lib/mui/css/icons-extra.css'
 import Vue from 'vue'
+import Vuex from 'vuex'
 import router from './router.js'
 import app from './App.vue'
 import first from './First.vue'
 //缩略图的使用
 import VuePreview from 'vue-preview'
 Vue.use(VuePreview)
+Vue.use(Vuex)
+var store = new Vuex.Store({
+    //专门用来存储数据
+    state: {
+        // 全局都可以使用
+        count: 0,
+    },
+    //store下state中的变量只能通过mutaions 中的方法进行操作，不推荐直接操作，因为调用组件都有操作的方法，万一数据紊乱不容易排错
+    mutations: {
+        // 子组件调用increment方法，只能使用this.$store.commit('方法名')
+        increment(state){
+            state.count++;
+        },
+        // c表示传递进来的参数，方法最多只支持2个参数，1、state，2、可以是单个值，也可以是对象 数组等
+        // 调用方式 this.$store.commit('subtract',4)
+        subtract(state,c){
+            state.count-=c
+        }
+    },
+    // getters只负责获取数据，不负责修改，修改数据使用 mutations 中的方法
+    getters: {
+        // 操作方式：$store.getters.optCount
+        optCount: function(state){
+            return '最新值是：'+state.count
+        }
+    }
+})
 //导入moment ，控制js的日期
 import moment from 'moment'
 //全局过滤器 过滤时间格式
@@ -45,5 +73,7 @@ var vm=new Vue({
     },
     methods:{},
     render: c=>c(first),
-    router
+    router,
+    // vuex的store 挂载到vm中，在组件中想要访问store里的数据，访问方式：$store.state.count
+    store,
  });
